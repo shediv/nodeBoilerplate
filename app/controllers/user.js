@@ -29,24 +29,8 @@ var User = function()
   });
 
 	this.signup = function(req, res){
-		var user = req.body.user;
-		User.count({mobile: user.mobile}, function(err, result){
-			if(err) throw err;
-			if(result) return res.status(500).json("Email Already Exists");
-
-			user.password = md5(user.password);
-			user.isActive = 0;
-			user.vcode = 5555;
-			user.dateOfJoin = new Date();
-			var newUser = User(user);
-
-			// save the User
-			newUser.save(function(err){
-				if(err) return res.status(500).json(err);
-				res.status(200).json({userId:newUser});
-			});	
-
-		});
+		//var user = req.body.user;
+		return res.status(200).json("U are on server");
 	};
 
 	this.store = function(req, res){
